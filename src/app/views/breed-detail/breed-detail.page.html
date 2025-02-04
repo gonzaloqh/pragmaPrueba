@@ -1,0 +1,25 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="mg-top-15">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">{{ breed.name }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <img *ngIf="breed.image" [src]="breed.image.url" alt="{{ breed.name }}"  class="fixed-img">
+    <h2 *ngIf="!breed.image" class="fixed-img">Image not found</h2>
+    <ion-list class="scrollable-list">
+      <ng-container *ngFor="let key of getKeys(breed)">
+        <ion-item *ngIf="!isObject(breed[key])">
+          <ion-label>
+            <h2>{{ key | titlecase }}</h2>
+            <p>{{ breed[key] }}</p>
+          </ion-label>
+        </ion-item>
+      </ng-container>
+    </ion-list>
+  </div>  
+</ion-content>

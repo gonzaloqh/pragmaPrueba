@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar class="mg-top-15">
+    <ion-title class="ion-text-center">Catbreeds</ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar minlength="2" placeolder="Search by breed" [(ngModel)]="searchTerm" (ionInput)="filterBreeds()"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list *ngIf="!error">
+    <ion-card *ngFor="let item of breeds">
+      <div class="card-container">
+        <div class="top-left">Nombre: {{item.name}}</div>
+        <div class="top-right" (click)="goToDetail(item)">Más...</div>
+        <img *ngIf="item.image" alt={{item.name}} src="{{item.image.url}}"  class="center-image"/>
+        <h2 *ngIf="!item.image" >Image not found</h2>
+        <div class="bottom-left">Origen: {{item.origin}}</div>
+        <div class="bottom-right">Inteligencia: {{item.intelligence}}</div>
+      </div>
+    </ion-card>  
+  </ion-list>
+
+  <div class="error-container" *ngIf="error">
+    <ion-button (click)="loadBreeds()" color="primary" expand="full">
+      Try Again
+    </ion-button>
+  </div>
+</ion-content>
