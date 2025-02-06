@@ -15,6 +15,7 @@ Este proyecto es una aplicación móvil desarrollada con **Ionic** y **Capacitor
    ```bash
    git clone https://github.com/tu-usuario/tu-proyecto.git
    cd tu-proyecto
+   npm install
    ```
 2. **Iniciar el proyecto de forma local**:
    ```bash
